@@ -82,3 +82,27 @@ Also of note is that templates are loaded using Thread.currentThread().getContex
 * Java 1.7
 * [Freemarker](http://freemarker.org/)
 * [JDBI](http://jdbi.org/)
+
+##Download
+To download via maven, add the following to your settings.xml or pom.xml
+```xml
+<repositories>
+    <repository>
+        <id>jdbi-freemarker-mvn-repo</id>
+        <name>jdbi-freemarker maven repo</name>
+        <url>https://raw.github.com/jhsheets/jdbi-freemarker/mvn-repo/</url>
+        <layout>default</layout>
+    </repository>
+</repositories>
+```
+And add the dependency to your pom.xml file
+```xml
+<dependency>
+    <groupId>org.jhsheets</groupId>
+    <artifactId>jdbi-freemarker</artifactId>
+    <version>1.0-SNAPSHOT</version>
+</dependency>
+```
+
+You can also download the JAR directly from github:
+https://github.com/jhsheets/jdbi-freemarker/tree/mvn-repo/org/jhsheets/jdbi-freemarker
