@@ -7,8 +7,9 @@ import java.lang.annotation.Annotation;
 import java.lang.reflect.Method;
 
 /**
- * Take information about the class annotated with {@link org.jhsheets.jdbi.freemarker.FreemarkerTemplate}, and construct a
- * {@link org.jhsheets.jdbi.freemarker.FreemarkerSqlCustomizer} which will be used to find the Freemarker template to apply.
+ * Take information about the class annotated with {@link FreemarkerTemplate}, and construct a
+ * {@link org.jhsheets.jdbi.freemarker.FreemarkerSqlCustomizer} which will be used to find the
+ * Freemarker template to apply.
  */
 public class FreemarkerLocatorFactory
 implements SqlStatementCustomizerFactory
