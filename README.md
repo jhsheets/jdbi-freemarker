@@ -1,0 +1,2 @@
+# jdbi-freemarker
+Maven repository
