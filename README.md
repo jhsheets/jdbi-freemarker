@@ -83,7 +83,7 @@ Template file: com.db.Misc.xml
 ##Notes
 Queries are stored in XML template files, and not in a single-template format that Freemarker natively uses. The XML format is very minimal, as outlined above. There is a root ```<queries>``` element, with child elements of ```<select>```, ```<insert>``` and ```<update>```. Each of the child elements must define an ```id``` attributes with a name unique to that XML file.
 
-Templates are cached using Freemarker's SoftCacheStorage.  While this means templates may be repeatedly parsed, it will ensure you will not have memory issues with cached queries.
+The XML file is not cached, but the Freemarker templates inside of it are using Freemarker's SoftCacheStorage.  While this means templates may be repeatedly parsed, it will ensure you will not have memory issues with cached queries.
 
 Also of note is that templates are loaded using Thread.currentThread().getContextClassLoader().getResource().
 
