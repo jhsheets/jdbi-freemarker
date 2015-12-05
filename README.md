@@ -35,7 +35,7 @@ public interface MyDao {
 
 	/**
 	 * Explicity looks for a statement with ID 'updateRecord',
-	 * in the explicitly defined XML template location 'com/test/MyDao.xml'
+	 * in the explicitly defined XML template location 'com/db/Misc.xml'
 	 */
 	@SqlUpdate 
     @FreemarkerTemplate(templateLoc="com/db/Misc.xml", statementID="updateRecord")
