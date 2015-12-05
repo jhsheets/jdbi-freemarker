@@ -22,7 +22,7 @@ public interface MyDao {
 	 * in an implicity defined XML template location with the same package/name as our interface
 	 */
 	@SqlQuery 
-    	@FreemarkerTemplate()
+    @FreemarkerTemplate()
 	public int getRecords(@Bind("idList") List<Integer> idList);
 
 	/** 
@@ -30,7 +30,7 @@ public interface MyDao {
 	 * in the explicitly defined XML template location 'com/test/MyDao.xml' 
 	 */
 	@SqlUpdate 
-    	@FreemarkerTemplate(templateLoc="com/test/MyDao.xml")
+    @FreemarkerTemplate(templateLoc="com/test/MyDao.xml")
 	public void insertRecord(@Bind("id") int id, @Bind("name") String name);
 
 	/**
@@ -38,7 +38,7 @@ public interface MyDao {
 	 * in the explicitly defined XML template location 'com/test/MyDao.xml'
 	 */
 	@SqlUpdate 
-    	@FreemarkerTemplate(templateLoc="com/db/Misc.xml", statementID="updateRecord")
+    @FreemarkerTemplate(templateLoc="com/db/Misc.xml", statementID="updateRecord")
 	public void misnamedFunc(@Bind("id") int someRecordID, @Bind("name") String someRecordName);
 }
 ```
