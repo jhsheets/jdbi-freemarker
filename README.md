@@ -17,19 +17,28 @@ DAO Interface: com.test.MyDao.java
 ```java
 package com.test
 public interface MyDao {
-	/** Basic use */
+	/** 
+	 * Implicitly looks for a statement with an ID that matches the function name 
+	 * in an implicity defined XML template location with the same package/name as our interface
+	 */
 	@SqlQuery 
-    @FreemarkerTemplate()
+    	@FreemarkerTemplate()
 	public int getRecords(@Bind("idList") List<Integer> idList);
 
-	/** Explicitly define the path to template file */
+	/** 
+	 * Implicitly looks for a statement with an ID that matches the function name
+	 * in the explicitly defined XML template location 'com/test/MyDao.xml' 
+	 */
 	@SqlUpdate 
-    @FreemarkerTemplate(templateLoc="com/test/MyDao.xml")
+    	@FreemarkerTemplate(templateLoc="com/test/MyDao.xml")
 	public void insertRecord(@Bind("id") int id, @Bind("name") String name);
 
-	/** My method and parameter names don't match the xml file, but my statementID an @Bind parameters do */
+	/**
+	 * Explicity looks for a statement with ID 'updateRecord',
+	 * in the explicitly defined XML template location 'com/test/MyDao.xml'
+	 */
 	@SqlUpdate 
-    @FreemarkerTemplate(templateLoc="com/db/Misc.xml", statementID="updateRecord")
+    	@FreemarkerTemplate(templateLoc="com/db/Misc.xml", statementID="updateRecord")
 	public void misnamedFunc(@Bind("id") int someRecordID, @Bind("name") String someRecordName);
 }
 ```
@@ -38,8 +47,8 @@ Template file: com.test.MyDao.xml
 ```xml
 <queries>
 	
-    <!-- Use freemarker to dynamically generate a query based on the number of items in the list -->
-    <select id="getRecords">
+	<!-- Use freemarker to dynamically generate a query based on the number of items in the list -->
+	<select id="getRecords">
 	<![CDATA[
 		<#assign doUnion = false>
         
@@ -72,9 +81,9 @@ Template file: com.db.Misc.xml
 ```	
 
 ##Notes
-Templates are cached using Freemarker's SoftCacheStorage.  While this means templates may be repeatedly parsed, it will ensure you will not have memory issues with cached queries.
+Queries are stored in XML template files, and not in a single-template format that Freemarker natively uses. The XML format is very minimal, as outlined above. There is a root <queries> element, with child elements of <select>, <insert> and <update>. Each of the child elements must define an 'id' attributes with a name unique to that XML file.
 
-Templates are also stored in a custom XML format, and not in a traditional, single-template format that Freemarker traditionally uses.
+Templates are cached using Freemarker's SoftCacheStorage.  While this means templates may be repeatedly parsed, it will ensure you will not have memory issues with cached queries.
 
 Also of note is that templates are loaded using Thread.currentThread().getContextClassLoader().getResource().
 
