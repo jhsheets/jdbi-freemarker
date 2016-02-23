@@ -96,21 +96,17 @@ Also of note is that templates are loaded using Thread.currentThread().getContex
 ##Download
 To download via maven, add the following to your settings.xml or pom.xml
 ```xml
-<repositories>
-    <repository>
-        <id>jdbi-freemarker-mvn-repo</id>
-        <name>jdbi-freemarker maven repo</name>
-        <url>https://raw.github.com/jhsheets/jdbi-freemarker/mvn-repo/</url>
-        <layout>default</layout>
-    </repository>
-</repositories>
+<repository>
+    <id>jitpack.io</id>
+    <url>https://jitpack.io</url>
+</repository>
 ```
 And add the dependency to your pom.xml file
 ```xml
 <dependency>
-    <groupId>org.jhsheets</groupId>
+    <groupId>com.github.jhsheets</groupId>
     <artifactId>jdbi-freemarker</artifactId>
-    <version>1.0-SNAPSHOT</version>
+    <version>1.0</version>
 </dependency>
 ```
 
